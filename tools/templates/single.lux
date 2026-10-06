@@ -1,0 +1,15 @@
+-- @NAME@
+
+unit main
+
+import bios.console as con
+
+proc main()
+  con.init(0, 0, 1)
+  con.puts("@NAME@\n")
+
+  -- Stay here so the screen can be read; remove to return to BASIC.
+  loop
+    nop()
+  end
+end

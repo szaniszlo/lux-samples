@@ -1,0 +1,7 @@
+# The demo disk: every sample program plus one data file.
+# Directive reference: tools/mkd64.py, or the "Disk manifests" section of README.md.
+
+disk  "LUX SAMPLES" 2a
+
+prg   hello
+text  assets/notes.txt "NOTES"

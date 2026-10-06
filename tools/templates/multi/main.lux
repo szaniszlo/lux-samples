@@ -1,0 +1,19 @@
+-- @NAME@
+--
+-- A multi-unit program: this file is the root, and every other .lux in this
+-- directory is a unit it can import by file name.
+
+unit main
+
+import bios.console as con
+import greeting
+
+proc main()
+  con.init(0, 0, 1)
+  greeting.show()
+
+  -- Stay here so the screen can be read; remove to return to BASIC.
+  loop
+    nop()
+  end
+end

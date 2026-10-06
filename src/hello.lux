@@ -1,0 +1,41 @@
+-- Hello World for the Commodore 64.
+--
+-- The smallest program that exercises the whole toolchain: it prints through
+-- the stdlib console driver, shows the sixteen colours, and waits for SPACE
+-- before handing the machine back to BASIC.
+
+unit main
+
+import bios.console as con
+import bios.keyboard as kbd
+
+const space: char = $a0
+
+-- One colour as a short solid bar.
+proc swatch(color: byte)
+  con.textcolor := color
+  con.putc(space)        -- reversed space: a solid block
+  con.putc(space)
+end
+
+proc main()
+  con.init(0, 0, 1)
+  kbd.init()
+
+  con.puts("Hello from Lux!\n\n")
+
+  for color: byte := 0 to 15 do
+    swatch(color)
+  end
+
+  con.textcolor := $f
+  con.puts("\n\nPress SPACE to exit.")
+
+  -- wait_for_key returns a screen code; SPACE is $20 there as in ASCII.
+  while kbd.wait_for_key() <> $20 do
+    nop()
+  end
+
+  kbd.shutdown()
+  con.restore()
+end

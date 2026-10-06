@@ -1,0 +1,9 @@
+-- A unit private to this program. Only `pub` declarations are visible to main.
+
+unit greeting
+
+import bios.console as con
+
+pub proc show()
+  con.puts("@NAME@\n")
+end
